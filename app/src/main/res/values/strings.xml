@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">fitnessappmobile</string>
+    <string name="welcome">Welcome Aboard!</string>
+    <string name="get_started">Let\'s Get Started</string>
+    <string name="welcome_text_1">We are so excited to be a part of your journey.</string>
+    <string name="welcome_text_2">Your fitness is our number one concern</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="email">Email</string>
+    <string name="email_icon">Email icon</string>
+    <string name="password">Password</string>
+    <string name="passwordvisibility_icon">Password visibility icon</string>
+</resources>
