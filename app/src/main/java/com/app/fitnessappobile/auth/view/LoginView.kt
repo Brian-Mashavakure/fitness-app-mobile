@@ -2,30 +2,24 @@ package com.app.fitnessappmobile.auth.view
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.app.destinations.DashboardViewDestination
+import com.app.destinations.SignUpViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
-import com.app.fitnessappmobile.ui.theme.HighlightColor
 import com.app.fitnessappmobile.ui.theme.SecondaryColor
 import com.app.fitnessappmobile.ui.theme.TextColor
 import com.app.fitnessappobile.R
@@ -33,9 +27,14 @@ import com.app.fitnessappobile.auth.view.components.ClickableAccountText
 import com.app.fitnessappobile.components.EmailTextFieldComponent
 import com.app.fitnessappobile.components.NormalButtonComponent
 import com.app.fitnessappobile.components.PasswordTextFieldComponent
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination
 @Composable
-fun Login(){
+fun LoginView(
+    navController: DestinationsNavigator
+){
     Surface(
         color = Background,
         modifier = Modifier.fillMaxSize(),
@@ -113,7 +112,9 @@ fun Login(){
                     contentAlignment = Alignment.Center
                 ){
                     NormalButtonComponent(
-                        onclickFunction = {},
+                        onclickFunction = {
+                            navController.navigate(DashboardViewDestination)
+                        },
                         stringResource = stringResource(id = R.string.login)
                     )
                 }
@@ -125,8 +126,10 @@ fun Login(){
                 ){
                     ClickableAccountText(
                         mainText = stringResource(id = R.string.dont_have_an_account),
-                        clickableText = stringResource(id = R.string.login),
-                        clickFunction = {}
+                        clickableText = stringResource(id = R.string.signup),
+                        clickFunction = {
+                            navController.navigate(SignUpViewDestination)
+                        }
                     )
                 }
 

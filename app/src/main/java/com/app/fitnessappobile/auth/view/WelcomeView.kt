@@ -1,38 +1,37 @@
 package com.app.fitnessappmobile.auth.view
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.destinations.SignUpViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
-import com.app.fitnessappmobile.ui.theme.HighlightColor
-import com.app.fitnessappmobile.ui.theme.SecondaryColor
-import com.app.fitnessappmobile.ui.theme.TextColor
 import com.app.fitnessappobile.R
 import com.app.fitnessappobile.components.NormalButtonComponent
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
-fun WelcomeScreen(
-    modifier: Modifier
+fun WelcomeView(
+    navController: DestinationsNavigator
 ){
    Surface(
-       modifier = modifier.fillMaxSize(),
+       modifier = Modifier.fillMaxSize(),
        color = Background,
        ){
        Column(
-           modifier = modifier.fillMaxHeight().padding(20.dp),
+           modifier = Modifier.fillMaxHeight().padding(20.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
            horizontalAlignment = Alignment.CenterHorizontally
        ){
@@ -44,7 +43,7 @@ fun WelcomeScreen(
 
            //text section
            Column(
-               modifier = modifier.fillMaxWidth(),
+               modifier = Modifier.fillMaxWidth(),
                horizontalAlignment = Alignment.CenterHorizontally
            ){
                Text(
@@ -53,7 +52,7 @@ fun WelcomeScreen(
                    fontSize = 30.sp,
                )
 
-               Spacer(modifier = modifier.height(5.dp))
+               Spacer(modifier = Modifier.height(5.dp))
 
                Text(
                    text = stringResource(id = R.string.welcome_text_1),
@@ -71,7 +70,9 @@ fun WelcomeScreen(
 
            //button
            NormalButtonComponent(
-               onclickFunction = { },
+               onclickFunction = {
+                   navController.navigate(SignUpViewDestination)
+               },
                stringResource = stringResource(id = R.string.get_started)
            )
        }

@@ -10,15 +10,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.app.fitnessappmobile.auth.view.Login
+import com.app.NavGraphs
+import com.app.fitnessappmobile.auth.view.WelcomeView
 import com.app.fitnessappobile.ui.theme.FitnessappobileTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FitnessappobileTheme {
-                Login()
+                DestinationsNavHost(navGraph = NavGraphs.root)
 
             }
         }
