@@ -15,10 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.fitnessappmobile.ui.theme.Background
@@ -26,19 +23,22 @@ import com.app.fitnessappmobile.ui.theme.HighlightColor
 import com.app.fitnessappmobile.ui.theme.SecondaryColor
 import com.app.fitnessappmobile.ui.theme.TextColor
 import com.app.fitnessappobile.R
+import org.w3c.dom.Text
 import kotlin.math.sin
 
 //import androidx.compose.runtime.remember
 
 
 @Composable
-fun EmailTextFieldComponent(){
-    var textValue by remember{mutableStateOf("")}
+fun EmailTextFieldComponent(
+   textFieldValue: String,
+   onValueChanged: (String) -> Unit,
+){
 
     OutlinedTextField(
         label = {Text(text = stringResource(id = R.string.email))},
-        value = textValue,
-        onValueChange = {textValue = it},
+        value = textFieldValue,
+        onValueChange = onValueChanged,
         colors = TextFieldDefaults.colors(
             focusedLabelColor = TextColor,
             focusedContainerColor = Background,
@@ -59,14 +59,16 @@ fun EmailTextFieldComponent(){
 
 
 @Composable
-fun PasswordTextFieldComponent(){
-    var textValue by remember{mutableStateOf("")}
+fun PasswordTextFieldComponent(
+    textValue : String,
+    onValueChanged: (String) -> Unit,
+){
     var passwordVisibilty by remember{mutableStateOf(false)}
 
     OutlinedTextField(
         label = { Text(text = stringResource(id = R.string.password))},
         value = textValue,
-        onValueChange = { textValue = it },
+        onValueChange = onValueChanged,
         modifier = Modifier.width(330.dp).clip(shape = RoundedCornerShape(8)),
         colors = TextFieldDefaults.colors(
             focusedLabelColor = TextColor,

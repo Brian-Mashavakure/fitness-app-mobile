@@ -6,15 +6,20 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
+//import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.app.destinations.DashboardViewDestination
 import com.app.destinations.LoginViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
@@ -22,6 +27,7 @@ import com.app.fitnessappmobile.ui.theme.SecondaryColor
 import com.app.fitnessappmobile.ui.theme.TextColor
 import com.app.fitnessappobile.R
 import com.app.fitnessappobile.auth.view.components.ClickableAccountText
+import com.app.fitnessappobile.auth.viewmodel.AuthViewModel
 import com.app.fitnessappobile.components.EmailTextFieldComponent
 import com.app.fitnessappobile.components.NormalButtonComponent
 import com.app.fitnessappobile.components.PasswordTextFieldComponent
@@ -31,8 +37,13 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Destination
 @Composable
 fun SignUpView(
-    navController: DestinationsNavigator
+    navController: DestinationsNavigator,
+    viewModel: AuthViewModel = hiltViewModel()
 ){
+
+    var emailAddress by remember { mutableStateOf("") }
+    var password by remember{ mutableStateOf("") }
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Background,
@@ -81,16 +92,25 @@ fun SignUpView(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    EmailTextFieldComponent()
+                    EmailTextFieldComponent(
+                        textFieldValue = emailAddress,
+                        onValueChanged = {emailAddress = it},
+                        )
 
                     Spacer(modifier = Modifier.height(5.dp))
 
-                    PasswordTextFieldComponent()
+                    PasswordTextFieldComponent(
+                        textValue = password,
+                        onValueChanged = {password = it},
+                    )
 
                     Spacer(modifier = Modifier.height(5.dp))
 
                     //confirm passsword
-                    PasswordTextFieldComponent()
+                    PasswordTextFieldComponent(
+                        textValue = password,
+                        onValueChanged = {password = it},
+                    )
                    }
 
 
@@ -101,7 +121,8 @@ fun SignUpView(
                 ){
                     NormalButtonComponent(
                         onclickFunction = {
-                            navController.navigate(DashboardViewDestination)
+                            viewModel.registerUser()
+                            //navController.navigate(DashboardViewDestination)
                         },
                         stringResource = stringResource(id = R.string.signup)
                     )

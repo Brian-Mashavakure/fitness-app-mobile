@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -35,6 +37,9 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun LoginView(
     navController: DestinationsNavigator
 ){
+    var emailAddress by remember{ mutableStateOf("")}
+    var password by remember{mutableStateOf("")}
+
     Surface(
         color = Background,
         modifier = Modifier.fillMaxSize(),
@@ -86,11 +91,17 @@ fun LoginView(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    EmailTextFieldComponent()
+                    EmailTextFieldComponent(
+                        textFieldValue = emailAddress,
+                        onValueChanged = {emailAddress = it}
+                    )
 
                     Spacer(modifier = Modifier.height(5.dp))
 
-                    PasswordTextFieldComponent()
+                    PasswordTextFieldComponent(
+                        textValue = password,
+                        onValueChanged = {password = it}
+                    )
                     //forgot password text
                     Box(
                         modifier =  Modifier.width(350.dp),
