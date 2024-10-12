@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.app.destinations.DashboardViewDestination
 import com.app.destinations.SignUpViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
@@ -26,16 +27,19 @@ import com.app.fitnessappmobile.ui.theme.SecondaryColor
 import com.app.fitnessappmobile.ui.theme.TextColor
 import com.app.fitnessappobile.R
 import com.app.fitnessappobile.auth.view.components.ClickableAccountText
+import com.app.fitnessappobile.auth.viewmodel.AuthViewModel
 import com.app.fitnessappobile.components.EmailTextFieldComponent
 import com.app.fitnessappobile.components.NormalButtonComponent
 import com.app.fitnessappobile.components.PasswordTextFieldComponent
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Destination
 @Composable
 fun LoginView(
-    navController: DestinationsNavigator
+    navController: DestinationsNavigator,
+    viewModel: AuthViewModel = hiltViewModel()
 ){
     var emailAddress by remember{ mutableStateOf("")}
     var password by remember{mutableStateOf("")}
@@ -124,7 +128,8 @@ fun LoginView(
                 ){
                     NormalButtonComponent(
                         onclickFunction = {
-                            navController.navigate(DashboardViewDestination)
+                            //navController.navigate(DashboardViewDestination)
+                            viewModel.loginUser()
                         },
                         stringResource = stringResource(id = R.string.login)
                     )

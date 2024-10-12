@@ -122,7 +122,6 @@ fun SignUpView(
                     NormalButtonComponent(
                         onclickFunction = {
                             viewModel.registerUser()
-                            //navController.navigate(DashboardViewDestination)
                         },
                         stringResource = stringResource(id = R.string.signup)
                     )

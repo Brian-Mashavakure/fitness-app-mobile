@@ -2,20 +2,31 @@ package com.app.fitnessappobile.auth.model
 
 import retrofit2.http.*
 
-interface AuthService{
+interface  AuthService{
+    @FormUrlEncoded
     @POST("auth/register")
-    suspend fun register(@Body user: User): String
-   
+    //suspend fun register(@Body user: User): AuthResponse
+    suspend fun register(
+        @Field("name") name : String,
+        @Field("email") email : String,
+        @Field("age") age : String,
+        @Field("gender") gender : String,
+        @Field("username") username : String,
+        @Field("password") password : String,
+    ): AuthResponse
+
+
+
     @FormUrlEncoded
     @POST("auth/login")
-    suspend fun login(@Field("username") username: String, @Field("password") password: String): String
+    suspend fun login(@Field("username") username: String, @Field("password") password: String): AuthResponse
 
     @FormUrlEncoded
     @POST("auth/deleteuser")
-    suspend fun deleteUser(@Field("username") username : String): String
+    suspend fun deleteUser(@Field("username") username : String): AuthResponse
 
 
     @FormUrlEncoded
     @POST("auth/tokenstatus")
-    suspend fun tokenStatus(@Field("username") username : String): String
+    suspend fun tokenStatus(@Field("username") username : String): AuthResponse
 }

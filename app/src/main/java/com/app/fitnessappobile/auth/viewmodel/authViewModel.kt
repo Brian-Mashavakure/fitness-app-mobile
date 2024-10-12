@@ -14,18 +14,38 @@ class AuthViewModel @Inject constructor(
     private val authRepo: AuthRepository
 ) : ViewModel() {
 
-    var user = User(
-        "Tafadzwa Mashavakure",
-        "tafadzwa.xxiii@gmail.com",
-        "23",
-        "Male",
-        "tafadzwaaaaaaa",
-        "zinixiwe"
-    )
-
-    fun registerUser() = viewModelScope.launch{
-        val registerResponse = authRepo.registerUser(user)
-        Log.e("Register Response Baby", "${registerResponse.toString()}")
+    //sign up
+    fun registerUser(){
+        try{
+            viewModelScope.launch{
+                val registerResponse = authRepo.registerUser(
+                    "Tafadzwa Mashavakure",
+                    "tafadzwa.xxiiis@gmail.com",
+                    "23",
+                    "Male",
+                    "brian",
+                    "zinixiwe"
+                )
+                Log.e("Register", "${registerResponse.toString()}")
+            }
+        }catch (e : Exception){
+            Log.e("Error", "Registration failed : ${e.message}")
+        }
     }
 
+
+    //login
+    fun loginUser(){
+        try{
+            viewModelScope.launch {
+                val loginResponse = authRepo.loginUser(
+                    "vongai",
+                    "zinixiwe"
+                )
+                Log.e("Login", "${loginResponse.toString()}")
+            }
+        }catch(e :Exception){
+            Log.e("Error", "Login Failed: ${e.message}")
+        }
+    }
 }
