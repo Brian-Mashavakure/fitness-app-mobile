@@ -5,7 +5,6 @@ import retrofit2.http.*
 interface  AuthService{
     @FormUrlEncoded
     @POST("auth/register")
-    //suspend fun register(@Body user: User): AuthResponse
     suspend fun register(
         @Field("name") name : String,
         @Field("email") email : String,
@@ -17,6 +16,8 @@ interface  AuthService{
 
 
 
+
+    @Headers("Authorization: Token token")
     @FormUrlEncoded
     @POST("auth/login")
     suspend fun login(@Field("username") username: String, @Field("password") password: String): AuthResponse

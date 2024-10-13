@@ -1,12 +1,17 @@
 package com.app.fitnessappobile.di.networking
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.app.fitnessappobile.auth.model.AuthService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -15,10 +20,36 @@ class NetworkingModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(): Retrofit{
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("Token_Store", Context.MODE_PRIVATE)
+    }
+
+    //TODO: Massive one look into timeout issue probably through deploying backend
+    @Provides
+    @Singleton
+    fun providesOkHttpClient(sharedPrefs: SharedPreferences): OkHttpClient {
+
+        val tokenString = sharedPrefs.getString("token", "")
+        return OkHttpClient.Builder()
+            .connectTimeout(100, TimeUnit.SECONDS)
+            .readTimeout(100, TimeUnit.SECONDS)
+            .writeTimeout(100, TimeUnit.SECONDS)
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", "$tokenString")
+                    .build()
+                chain.proceed(request)
+            }
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesRetrofit(sharedPrefs: SharedPreferences): Retrofit{
         return Retrofit.Builder()
             .baseUrl("http://192.168.0.3:8080/api/")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(providesOkHttpClient(sharedPrefs))
             .build()
     }
 
