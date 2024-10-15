@@ -34,12 +34,18 @@ class NetworkingModule {
             .connectTimeout(100, TimeUnit.SECONDS)
             .readTimeout(100, TimeUnit.SECONDS)
             .writeTimeout(100, TimeUnit.SECONDS)
-            .addInterceptor { chain ->
-                val request = chain.request().newBuilder()
-                    .addHeader("Authorization", "$tokenString")
-                    .build()
-                chain.proceed(request)
-            }
+//            .addInterceptor { chain ->
+//                val request = chain.request().newBuilder()
+//                    .addHeader("Authorization", "$tokenString")
+//                    .build()
+//                val originalHttpUrl = request.url
+//                val requestBuilder = request.newBuilder()
+//                if (originalHttpUrl.encodedPath.contains("/auth/register").not()) {
+//                    requestBuilder.addHeader("Authorization", "$tokenString")
+//                }
+//                chain.proceed(requestBuilder.build())
+//                chain.proceed(request)
+//            }
             .build()
     }
 
@@ -47,7 +53,7 @@ class NetworkingModule {
     @Singleton
     fun providesRetrofit(sharedPrefs: SharedPreferences): Retrofit{
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.3:8080/api/")
+            .baseUrl("http://192.168.0.7:8080/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(providesOkHttpClient(sharedPrefs))
             .build()

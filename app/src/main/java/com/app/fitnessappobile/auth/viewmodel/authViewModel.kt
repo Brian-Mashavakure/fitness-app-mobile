@@ -31,17 +31,20 @@ class AuthViewModel @Inject constructor(
         try{
             viewModelScope.launch(Dispatchers.IO){
                 val registerResponse = authRepo.registerUser(
-                    "Alison Masakadza",
-                    "ali.xxiii@gmail.com",
-                    "24",
+                    "Danai Tobaiwa",
+                    "danaitobaiwa@gmail.com",
+                    "23",
                     "Female",
-                    "Ali",
+                    "danie",
                     "zinixiwe"
                 )
 
+                //format token
+                var formattedToken = registerResponse.message.removeSurrounding("\"")
+
                 //save token in shared pref
                 val prefEditor = sharedPrefs?.edit()
-                prefEditor?.putString("token", registerResponse.message)
+                prefEditor?.putString("token", formattedToken)
                 prefEditor?.commit()
 
                 Log.e("Register", "${registerResponse.toString()}")
@@ -55,17 +58,20 @@ class AuthViewModel @Inject constructor(
     //login
     fun loginUser(){
         try{
+            val tokenString = sharedPrefs?.getString("token", "")
+
+            Log.e("token","$tokenString")
+
             viewModelScope.launch(Dispatchers.IO){
                 val loginResponse = authRepo.loginUser(
-                    "Ali",
+                    tokenString,
+                    "danie",
                     "zinixiwe"
                 )
+
                 Log.e("Login", "${loginResponse.toString()}")
             }
-
-            //print token
-//            val tokenString = sharedPrefs?.getString("token", "")
-//            Log.e("Token", "${tokenString}")
+            
         }catch(e :Exception){
             Log.e("Error", "Login Failed: ${e.message}")
         }

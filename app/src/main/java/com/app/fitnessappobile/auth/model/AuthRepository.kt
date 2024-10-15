@@ -24,8 +24,8 @@ class AuthRepository @Inject constructor(
         )
     }
 
-    suspend fun loginUser(username : String, password : String): AuthResponse{
-        return authService.login(username, password)
+    suspend fun loginUser(token: String?, username : String, password : String): AuthResponse{
+        return authService.login(token ,username, password)
     }
 
     suspend fun deleteUser(username: String): AuthResponse{

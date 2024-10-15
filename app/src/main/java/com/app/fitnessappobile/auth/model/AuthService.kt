@@ -15,12 +15,13 @@ interface  AuthService{
     ): AuthResponse
 
 
-
-
-    @Headers("Authorization: Token token")
     @FormUrlEncoded
     @POST("auth/login")
-    suspend fun login(@Field("username") username: String, @Field("password") password: String): AuthResponse
+    suspend fun login(
+        @Header("Token") token: String?,
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): AuthResponse
 
     @FormUrlEncoded
     @POST("auth/deleteuser")
