@@ -1,5 +1,8 @@
 package com.app.fitnessappobile.components
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,18 +18,52 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.app.fitnessappmobile.ui.theme.Background
-import com.app.fitnessappmobile.ui.theme.HighlightColor
-import com.app.fitnessappmobile.ui.theme.SecondaryColor
-import com.app.fitnessappmobile.ui.theme.TextColor
+import com.app.fitnessappmobile.ui.theme.*
 import com.app.fitnessappobile.R
 import org.w3c.dom.Text
 import kotlin.math.sin
 
-//import androidx.compose.runtime.remember
+@Composable
+
+fun NormalTextFieldComponent(
+    textFieldValue: String,
+    labelFieldValue: String,
+    onValueChanged: (String) -> Unit
+){
+
+    OutlinedTextField(
+        label = {Text(text = labelFieldValue)},
+        value = textFieldValue,
+        textStyle = TextStyle(
+            color = TextColor
+        ),
+        onValueChange = onValueChanged,
+        colors = TextFieldDefaults.colors(
+            focusedLabelColor = TextColor,
+            focusedContainerColor = Background,
+            unfocusedContainerColor = Background,
+            focusedIndicatorColor = TextColor,
+            unfocusedLabelColor = TextColor,
+            unfocusedIndicatorColor = TextColor
+        ),
+        trailingIcon = { Icon(
+            painter = painterResource(id = R.drawable.person),
+            contentDescription = stringResource(id = R.string.person_icon),
+            tint = TextColor
+            )
+        },
+        modifier = Modifier
+            .width(330.dp).width(2.dp),
+        singleLine = true,
+        maxLines = 1,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+    )
+
+}
 
 
 @Composable
@@ -39,18 +76,24 @@ fun EmailTextFieldComponent(
         label = {Text(text = stringResource(id = R.string.email))},
         value = textFieldValue,
         onValueChange = onValueChanged,
+        textStyle = TextStyle(
+            color = TextColor
+        ),
         colors = TextFieldDefaults.colors(
             focusedLabelColor = TextColor,
             focusedContainerColor = Background,
+            unfocusedContainerColor = Background,
             focusedIndicatorColor = TextColor,
-            cursorColor = Background,
-            unfocusedContainerColor = Background
+            unfocusedLabelColor = TextColor,
+            unfocusedIndicatorColor = TextColor
         ),
         trailingIcon = { Icon(
             painter = painterResource(id = R.drawable.mail),
-            contentDescription = stringResource(id = R.string.email_icon))
+            contentDescription = stringResource(id = R.string.email_icon),
+            tint = TextColor
+            )
         },
-        modifier = Modifier.width(330.dp).clip(shape = RoundedCornerShape(8)),
+        modifier = Modifier.width(330.dp).width(2.dp),
         singleLine = true,
         maxLines = 1,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
@@ -69,19 +112,24 @@ fun PasswordTextFieldComponent(
         label = { Text(text = stringResource(id = R.string.password))},
         value = textValue,
         onValueChange = onValueChanged,
-        modifier = Modifier.width(330.dp).clip(shape = RoundedCornerShape(8)),
+        textStyle = TextStyle(
+            color = TextColor
+        ),
+        modifier = Modifier.width(330.dp).width(2.dp),
         colors = TextFieldDefaults.colors(
             focusedLabelColor = TextColor,
-            focusedIndicatorColor = TextColor,
             focusedContainerColor = Background,
-            cursorColor = Background,
-            unfocusedContainerColor = Background
+            unfocusedContainerColor = Background,
+            focusedIndicatorColor = TextColor,
+            unfocusedLabelColor = TextColor,
+            unfocusedIndicatorColor = TextColor
         ),
         trailingIcon = {
             IconButton(
                 content = {Icon(
                     painter= painterResource(id = if(passwordVisibilty) R.drawable.visibility else R.drawable.visibility_off ),
-                    contentDescription = stringResource(id = R.string.passwordvisibility_icon)
+                    contentDescription = stringResource(id = R.string.passwordvisibility_icon),
+                    tint = TextColor
                 )},
                 onClick = { passwordVisibilty = !passwordVisibilty},
                 )

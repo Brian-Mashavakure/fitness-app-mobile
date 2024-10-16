@@ -9,6 +9,7 @@ val Background = Color(0xFFFFFFFF)
 val SecondaryColor = Color(0xFFFCAB10)
 val HighlightColor = Color(0xFFFEDB9A)
 val TextColor = Color(0xFF1C1F22)
+val ErrorColor = Color(0xFFEF7960)
 
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)

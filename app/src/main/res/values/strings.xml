@@ -12,8 +12,15 @@
     <string name="welcome_back">Welcome Back</string>
     <string name="forgot_password">forgot password?</string>
     <string name="email">Email</string>
+    <string name="name">Full Name</string>
+    <string name="age">Enter Age</string>
+    <string name="gender">Enter Gender(M/F)</string>
+    <string name="username">Enter Username</string>
     <string name="email_icon">Email icon</string>
+    <string name="person_icon">Person icon</string>
     <string name="password">Password</string>
     <string name="passwordvisibility_icon">Password visibility icon</string>
     <string name="web_client_id">237373615715-phabqt1js459002mi6qon5cs9rfpm90n.apps.googleusercontent.com</string>
+    <string name="login_error">Failed To Log In</string>
+    <string name="signup_error">Failed To SIgn Up</string>
 </resources>
