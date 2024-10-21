@@ -3,6 +3,7 @@ package com.app.fitnessappobile.di.networking
 import android.content.Context
 import android.content.SharedPreferences
 import com.app.fitnessappobile.auth.model.AuthService
+import com.app.fitnessappobile.workouts.model.WorkoutService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,5 +52,11 @@ class NetworkingModule {
     @Singleton
     fun providesAuthService(retrofit: Retrofit): AuthService {
         return retrofit.create(AuthService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesWorkoutService(retrofit: Retrofit): WorkoutService{
+        return retrofit.create(WorkoutService::class.java)
     }
 }

@@ -158,7 +158,10 @@ fun LoginView(
                 ){
                     NormalButtonComponent(
                         onclickFunction = {
-                            viewModel.loginUser()
+                            viewModel.loginUser(
+                                username,
+                                password
+                            )
                             viewModel.loginStatus.observe(lifeCycleOwner){ status ->
                                 if(status == "Logged"){
                                     navController.navigate(DashboardViewDestination)

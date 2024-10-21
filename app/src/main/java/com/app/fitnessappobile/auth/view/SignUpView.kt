@@ -185,7 +185,14 @@ fun SignUpView(
                 ){
                     NormalButtonComponent(
                         onclickFunction = {
-                            viewModel.registerUser()
+                            viewModel.registerUser(
+                                name,
+                                emailAddress,
+                                age,
+                                gender,
+                                username,
+                                password,
+                            )
                             viewModel.registerStatus.observe(lifeCycleOwner){status ->
                                 if(status == "Success"){
                                     navController.navigate(DashboardViewDestination)

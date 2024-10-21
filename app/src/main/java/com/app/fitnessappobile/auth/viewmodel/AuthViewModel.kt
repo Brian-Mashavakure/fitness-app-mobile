@@ -1,13 +1,10 @@
 package com.app.fitnessappobile.auth.viewmodel
 
 import android.app.Application
-import android.content.*
 import android.content.Context.MODE_PRIVATE
 import android.util.Log
 import androidx.lifecycle.*
 import com.app.fitnessappobile.auth.model.AuthRepository
-import com.app.fitnessappobile.auth.model.User
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,24 +24,25 @@ class AuthViewModel @Inject constructor(
     val registerStatus: LiveData<String> = _registerStatus
 
     //application context
-    private val applicatonContext = getApplication<Application>().applicationContext
+    private val applicationContext = getApplication<Application>().applicationContext
 
     //preferences reference
-    val sharedPrefs = applicatonContext?.getSharedPreferences("Token_Store", MODE_PRIVATE)
+    val sharedPrefs = applicationContext?.getSharedPreferences("Token_Store", MODE_PRIVATE)
 
     //sign up
-    fun registerUser(){
+    fun registerUser(
+        name: String, email: String, age: String, gender: String, userName: String, password: String
+    ){
         try{
             viewModelScope.launch(Dispatchers.IO){
                 val registerResponse = authRepo.registerUser(
-                    "Danai Tobaiwa",
-                    "danaitobaiwa@gmail.com",
-                    "23",
-                    "Female",
-                    "danie",
-                    "zinixiwe"
+                    name,
+                    email,
+                    age,
+                    gender,
+                    userName,
+                    password
                 )
-
 
                 if(registerResponse.message != null){
                     //format token
@@ -70,7 +68,9 @@ class AuthViewModel @Inject constructor(
 
 
     //login
-    fun loginUser(){
+    fun loginUser(
+        userName: String, password: String
+    ){
         try{
             val tokenString = sharedPrefs?.getString("token", "")
 
@@ -80,8 +80,8 @@ class AuthViewModel @Inject constructor(
                 try{
                     val loginResponse = authRepo.loginUser(
                         tokenString,
-                        "marilyn",
-                        "zinixiwe"
+                        userName,
+                        password
                     )
 
                     if(loginResponse.message == "Logged in successfully"){

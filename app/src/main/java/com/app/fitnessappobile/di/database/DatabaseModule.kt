@@ -24,8 +24,8 @@ class DatabaseModule {
         return Room.databaseBuilder(
             context.applicationContext,
             FitXDatabase::class.java,
-            "fitness-database")
-            .build()
+            "fitness-database"
+        ).build()
     }
 
 
