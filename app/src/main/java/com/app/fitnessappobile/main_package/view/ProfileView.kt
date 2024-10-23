@@ -16,14 +16,12 @@ import com.app.destinations.ProfileViewDestination
 import com.app.destinations.SettingsViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
 @Destination
 @Composable
-fun DashboardView(
-    navigator: DestinationsNavigator
+fun ProfileView(
+    navigator: DestinationsNavigator,
 ){
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -36,18 +34,16 @@ fun DashboardView(
                 onNavigateProfile = {navigator.navigate(ProfileViewDestination)}
             )
         }
-    )
-    { contentPadding ->
+    ) { contentPadding ->
         Box(
             modifier = Modifier.fillMaxSize().padding(contentPadding),
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Dashboard Baby!!!",
+                text = "Profile Baby!!!",
                 fontSize = 50.sp,
                 fontWeight = FontWeight.Bold,
             )
-
         }
     }
 }

@@ -4,25 +4,27 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.app.NavGraphs
 import com.app.destinations.CommunityViewDestination
 import com.app.destinations.DashboardViewDestination
 import com.app.destinations.ProfileViewDestination
 import com.app.destinations.SettingsViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
+import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.NavGraph
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
+
+
 @Destination
 @Composable
-fun DashboardView(
+fun MainView(
     navigator: DestinationsNavigator
 ){
     Scaffold(
@@ -36,18 +38,15 @@ fun DashboardView(
                 onNavigateProfile = {navigator.navigate(ProfileViewDestination)}
             )
         }
-    )
-    { contentPadding ->
+
+    ) { contentPadding ->
         Box(
             modifier = Modifier.fillMaxSize().padding(contentPadding),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "Dashboard Baby!!!",
-                fontSize = 50.sp,
-                fontWeight = FontWeight.Bold,
+        ){
+            DestinationsNavHost(
+                navGraph = NavGraphs.root,
             )
-
         }
     }
+
 }

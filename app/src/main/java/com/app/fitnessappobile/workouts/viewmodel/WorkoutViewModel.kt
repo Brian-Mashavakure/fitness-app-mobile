@@ -173,7 +173,7 @@ class WorkoutViewModel @Inject constructor(
                 )
 
                 if(response.message == "Successfully deleted workout"){
-                    //TODO: Update streak UI to remove workout
+                    //TODO: Update UI to remove workout
                     Log.e("Streak", "Workout successfully deleted")
                     _deletionStatus.postValue("Success")
                 }else{

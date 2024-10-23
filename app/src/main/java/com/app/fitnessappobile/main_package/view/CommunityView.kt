@@ -16,15 +16,13 @@ import com.app.destinations.ProfileViewDestination
 import com.app.destinations.SettingsViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
 @Destination
 @Composable
-fun DashboardView(
-    navigator: DestinationsNavigator
-){
+fun CommunityView(
+    navigator: DestinationsNavigator,
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = Background,
@@ -43,7 +41,7 @@ fun DashboardView(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Dashboard Baby!!!",
+                text = "Community Baby!!!",
                 fontSize = 50.sp,
                 fontWeight = FontWeight.Bold,
             )

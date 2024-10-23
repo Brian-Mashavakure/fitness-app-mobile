@@ -23,4 +23,8 @@
     <string name="web_client_id">237373615715-phabqt1js459002mi6qon5cs9rfpm90n.apps.googleusercontent.com</string>
     <string name="login_error">Failed To Log In</string>
     <string name="signup_error">Failed To SIgn Up</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <string name="community">Community</string>
+    <string name="settings">Settings</string>
 </resources>

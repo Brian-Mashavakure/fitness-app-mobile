@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.destinations.MainViewDestination
 import com.app.destinations.SignUpViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
 import com.app.fitnessappobile.R
@@ -20,7 +21,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
+
 @Destination
 @Composable
 fun WelcomeView(
