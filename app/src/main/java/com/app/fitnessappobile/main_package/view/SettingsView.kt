@@ -40,7 +40,7 @@ fun SettingsView(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Settings Baby!!!",
+                text = "Settings",
                 fontSize = 50.sp,
                 fontWeight = FontWeight.Bold,
             )

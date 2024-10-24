@@ -18,17 +18,23 @@ interface  AuthService{
     @FormUrlEncoded
     @POST("auth/login")
     suspend fun login(
-        @Header("Token") token: String?,
+        @Header("Authorization") token: String?,
         @Field("username") username: String,
         @Field("password") password: String
     ): AuthResponse
 
     @FormUrlEncoded
     @POST("auth/deleteuser")
-    suspend fun deleteUser(@Field("username") username : String): AuthResponse
+    suspend fun deleteUser(
+        @Field("Authorization") token: String?,
+        @Field("username") username : String
+    ): AuthResponse
 
 
     @FormUrlEncoded
     @POST("auth/tokenstatus")
-    suspend fun tokenStatus(@Field("username") username : String): AuthResponse
+    suspend fun tokenStatus(
+        @Field("Authorization") token: String?,
+        @Field("username") username : String
+    ): AuthResponse
 }

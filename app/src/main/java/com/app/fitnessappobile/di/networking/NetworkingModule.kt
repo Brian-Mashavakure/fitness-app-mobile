@@ -3,6 +3,8 @@ package com.app.fitnessappobile.di.networking
 import android.content.Context
 import android.content.SharedPreferences
 import com.app.fitnessappobile.auth.model.AuthService
+import com.app.fitnessappobile.goals.model.GoalService
+import com.app.fitnessappobile.runs.model.RunsService
 import com.app.fitnessappobile.workouts.model.WorkoutService
 import dagger.Module
 import dagger.Provides
@@ -58,5 +60,17 @@ class NetworkingModule {
     @Singleton
     fun providesWorkoutService(retrofit: Retrofit): WorkoutService{
         return retrofit.create(WorkoutService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesGoalService(retrofit: Retrofit): GoalService {
+        return retrofit.create(GoalService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesRunService(retrofit: Retrofit): RunsService{
+        return retrofit.create(RunsService::class.java)
     }
 }

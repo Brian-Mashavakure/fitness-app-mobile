@@ -28,11 +28,11 @@ class AuthRepository @Inject constructor(
         return authService.login(token ,username, password)
     }
 
-    suspend fun deleteUser(username: String): AuthResponse{
-        return authService.deleteUser(username)
+    suspend fun deleteUser(token: String?, username: String): AuthResponse{
+        return authService.deleteUser(token, username)
     }
 
-    suspend fun getTokenStatus(username: String): AuthResponse{
-        return authService.tokenStatus(username)
+    suspend fun getTokenStatus(token: String?, username: String): AuthResponse{
+        return authService.tokenStatus(token, username)
     }
 }
