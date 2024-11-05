@@ -11,6 +11,7 @@ val LightSecondaryColor = Color(0xFFF9EDE8)
 val HighlightColor = Color(0xFFFEDB9A)
 val TextColor = Color(0xFF1C1F22)
 val ErrorColor = Color(0xFFEF7960)
+val GreyBackground = Color(0xFFE0E0E0)
 
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)

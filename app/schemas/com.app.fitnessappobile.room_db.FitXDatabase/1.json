@@ -1,0 +1,248 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "5dabfda14cc2a3488659d8cc86edcbf0",
+    "entities": [
+      {
+        "tableName": "workout",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `workout_nickname` TEXT NOT NULL, `warmup_activity` TEXT NOT NULL, `warmup_time` TEXT NOT NULL, `cardio_activity` TEXT NOT NULL, `cardio_time` TEXT NOT NULL, `strength_activity` TEXT NOT NULL, `strength_time` TEXT NOT NULL, `core_activity` TEXT NOT NULL, `core_time` TEXT NOT NULL, `flex_activity` TEXT NOT NULL, `flex_time` TEXT NOT NULL, `cooldown_activity` TEXT NOT NULL, `cooldown_time` TEXT NOT NULL, `streak` TEXT NOT NULL, `workout_date` TEXT NOT NULL, `username` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workoutNickname",
+            "columnName": "workout_nickname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "warmupActivity",
+            "columnName": "warmup_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "warmupTime",
+            "columnName": "warmup_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardioActivity",
+            "columnName": "cardio_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardioTime",
+            "columnName": "cardio_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "strengthActivity",
+            "columnName": "strength_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "strengthTime",
+            "columnName": "strength_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coreActivity",
+            "columnName": "core_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coreTime",
+            "columnName": "core_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flexActivity",
+            "columnName": "flex_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flexTime",
+            "columnName": "flex_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cooldownActivity",
+            "columnName": "cooldown_activity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cooldownTime",
+            "columnName": "cooldown_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streak",
+            "columnName": "streak",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workoutDate",
+            "columnName": "workout_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "runs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `set_distance` TEXT NOT NULL, `start_time` TEXT NOT NULL, `end_time` TEXT NOT NULL, `covered_distance` TEXT NOT NULL, `time_taken` TEXT NOT NULL, `run_date` TEXT NOT NULL, `username` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "setDistance",
+            "columnName": "set_distance",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "start_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endTime",
+            "columnName": "end_time",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coveredDistance",
+            "columnName": "covered_distance",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeTaken",
+            "columnName": "time_taken",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "runDate",
+            "columnName": "run_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "goals",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `goal_desc` TEXT NOT NULL, `date_set` TEXT NOT NULL, `finish_date` TEXT NOT NULL, `username` TEXT NOT NULL, `workout_nickname` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goalDescription",
+            "columnName": "goal_desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateSet",
+            "columnName": "date_set",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "finishDate",
+            "columnName": "finish_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workoutNickname",
+            "columnName": "workout_nickname",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5dabfda14cc2a3488659d8cc86edcbf0')"
+    ]
+  }
+}

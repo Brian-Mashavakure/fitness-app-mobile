@@ -1,6 +1,9 @@
 package com.app.fitnessappobile.main_package.view
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -15,6 +18,7 @@ import com.app.destinations.DashboardViewDestination
 import com.app.destinations.ProfileViewDestination
 import com.app.destinations.SettingsViewDestination
 import com.app.fitnessappmobile.ui.theme.Background
+import com.app.fitnessappmobile.ui.theme.LightSecondaryColor
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -33,20 +37,26 @@ fun DashboardView(
                 onNavigateDashboard = {navigator.navigate(DashboardViewDestination)},
                 onNavigateCommunity = {navigator.navigate(CommunityViewDestination)},
                 onNavigateSettings = {navigator.navigate(SettingsViewDestination)},
-                onNavigateProfile = {navigator.navigate(ProfileViewDestination)}
+                onNavigateProfile = {navigator.navigate(ProfileViewDestination)},
+                navController = navigator
             )
         }
     )
     { contentPadding ->
-        Box(
-            modifier = Modifier.fillMaxSize().padding(contentPadding),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "Dashboard Baby!!!",
-                fontSize = 50.sp,
-                fontWeight = FontWeight.Bold,
-            )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+                .scrollable(
+                    state = ScrollableState {
+                        it
+                    },
+                    enabled = true,
+                    orientation = Orientation.Vertical,
+                    reverseDirection = true,
+                )
+        ){
+
 
         }
     }

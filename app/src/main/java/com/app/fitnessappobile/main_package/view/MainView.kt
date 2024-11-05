@@ -35,7 +35,8 @@ fun MainView(
                 onNavigateDashboard = {navigator.navigate(DashboardViewDestination)},
                 onNavigateCommunity = {navigator.navigate(CommunityViewDestination)},
                 onNavigateSettings = {navigator.navigate(SettingsViewDestination)},
-                onNavigateProfile = {navigator.navigate(ProfileViewDestination)}
+                onNavigateProfile = {navigator.navigate(ProfileViewDestination)},
+                navController = navigator
             )
         }
 

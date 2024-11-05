@@ -164,3 +164,35 @@ fun NormalButtonComponent(
         )
     }
 }
+
+
+@Composable
+fun NormalTextFieldComponentWithoutIcon(
+    textFieldValue: String,
+    labelFieldValue: String,
+    onValueChanged: (String) -> Unit
+){
+
+    OutlinedTextField(
+        label = {Text(text = labelFieldValue)},
+        value = textFieldValue,
+        textStyle = TextStyle(
+            color = TextColor
+        ),
+        onValueChange = onValueChanged,
+        colors = TextFieldDefaults.colors(
+            focusedLabelColor = TextColor,
+            focusedContainerColor = Background,
+            unfocusedContainerColor = Background,
+            focusedIndicatorColor = TextColor,
+            unfocusedLabelColor = TextColor,
+            unfocusedIndicatorColor = TextColor
+        ),
+        modifier = Modifier
+            .width(330.dp).width(2.dp),
+        singleLine = true,
+        maxLines = 1,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+    )
+
+}
